@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="ts"
+            id="org.eclipse.lsp4e.languages.ts"
+            name="TypeScript"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.genericeditor.presentationReconcilers">
+      <presentationReconciler
+            class="org.eclipse.tm4e.ui.text.TMPresentationReconciler"
+            contentType="org.eclipse.lsp4e.languages.ts">
+      </presentationReconciler>
+   </extension>
+   <extension
+         point="org.eclipse.tm4e.core.grammars">
+      <grammar
+      		scopeName="source.ts"
+            path="./syntaxes/TypeScript.tmLanguage.json" >
+      </grammar>     
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.lsp4e.languages.ts"
+            scopeName="source.ts">
+      </scopeNameContentTypeBinding>
+   </extension>
+   
+   <!--<extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.eclipse.lsp4e.languages.InitializeLaunchConfigurations">
+      </startup>
+   </extension> -->
+   <extension
+         point="org.eclipse.ui.editors">
+      <editorContentTypeBinding
+            contentTypeId="org.eclipse.lsp4e.languages.ts"
+            editorId="org.eclipse.ui.genericeditor.GenericEditor">
+      </editorContentTypeBinding>      
+   </extension>
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.lsp4e.typescript.TypeScriptLanguageServer"
+            id="org.eclipse.lsp4e.languages.ts"
+            label="TypeScript Language Server">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.lsp4e.languages.ts"
+            id="org.eclipse.lsp4e.languages.ts">
+      </contentTypeMapping>     
+   </extension>
+</plugin>
